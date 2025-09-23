@@ -12,14 +12,13 @@ router.get('/', (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-    const user = await prisma.users.findFirst({
-        where: { email }
+    const user = await prisma.users.findUnique({
+        where: { email: req.body.email }
     });
     if (user == null) {
         return res.status(401).json({ msg: 'Authentication failed' });
     }
-    const validPassword = await bcrypt.compare(password, user.password);
+    const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) {
         return res.status(401).json({ msg: 'Authentication failed' });
     }

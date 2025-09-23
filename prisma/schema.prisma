@@ -9,10 +9,8 @@ datasource db {
 
 model users {
   id       Int    @id(map: "PK_users") @default(autoincrement())
-  username String @db.VarChar(250) 
-  email    String @db.VarChar(250) 
+  username String @unique @db.VarChar(250) 
+  email    String @unique @db.VarChar(250) 
   password String @db.VarChar(250)
   role     String @default("user") @db.VarChar(250)
-
-  @@unique([email, username])
 }
