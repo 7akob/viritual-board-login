@@ -7,9 +7,9 @@ POST {{apiURL}}
 Content-Type: application/json
 
 {
-    "username": "JohnDoe",
-    "email": "jd@test.com",
-    "password": "testpassword"
+    "username": "sauli",
+    "email": "sauli@test.com",
+    "password": "sauli"
 
 }
 
@@ -18,6 +18,6 @@ POST {{apiURL}}/login
 Content-Type: application/json
 
 {
-    "email": "jd@test.com",
-    "password": "testpassword"
+    "email": "sauli@test.com",
+    "password": "sauli"
 }
