@@ -1,4 +1,4 @@
-@apiURL = http://localhost:8080/users
+@apiURL = https://viritual-board-login.onrender.com/users
 
 GET {{apiURL}}
 
@@ -7,9 +7,9 @@ POST {{apiURL}}
 Content-Type: application/json
 
 {
-    "username": "sauli",
-    "email": "sauli@test.com",
-    "password": "sauli"
+    "username": "Stubb",
+    "email": "stubb@test.com",
+    "password": "stubb"
 
 }
 
