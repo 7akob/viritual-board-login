@@ -14,8 +14,9 @@ module.exports = function (req, res, next) {
         console.log("Authorized user:", user.sub, user.username);
         next();
     } catch (error) {
-        return res.status(401).json({ 
+        return res.status(401).json({
             msg: 'Unauthorized',
-        error: error.message });
+            error: error.message
+        });
     }
 }
