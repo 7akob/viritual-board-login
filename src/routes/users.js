@@ -24,13 +24,32 @@ router.post('/login', async (req, res) => {
     }
 
 
-    const token = jwt.sign({ 
+    const accessToken = jwt.sign({ 
         id: user.id, 
         email: user.email,
         name: user.username,
         role: user.role
-    }, process.env.JWT_SECRET, { expiresIn: '30d' });
-    res.json({ msg: "Login ok, token: ", token });
+    }, process.env.JWT_SECRET, { expiresIn: '15m' });
+
+    const refreshToken = jwt.sign(
+        { id: user.id},
+        process.env.JWT_REFRESH_SECRET,
+        { expiresIn: '30d'}
+    );
+
+    await prisma.refresh_tokens.create({
+        data: {
+            user_id: user.id,
+            token: refreshToken,
+            expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) //30 dagar
+        }
+    })
+
+    res.json({
+        msg: 'Login ok',
+        accessToken,
+        refreshToken
+    })
 });
 
 router.post('/', async (req, res) => {

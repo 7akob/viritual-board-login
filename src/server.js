@@ -15,6 +15,9 @@ app.get('/', (req, res) => {
 const userRoutes = require('./routes/users');
 app.use('/users', userRoutes);
 
+const refreshRoutes = require('./routes/refresh.js');
+app.use('/refresh', refreshRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server is running on  http://localhost:${PORT}`);
 });
