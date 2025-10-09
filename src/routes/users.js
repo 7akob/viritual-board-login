@@ -8,7 +8,7 @@ const router = express.Router();
 const prisma = new PrismaClient();
 
 router.get('/', (req, res) => {
-  res.json({ msg: 'User route is working' });
+    res.json({ msg: 'User route is working' });
 });
 
 router.post('/login', async (req, res) => {
