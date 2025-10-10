@@ -24,17 +24,17 @@ router.post('/login', async (req, res) => {
     }
 
 
-    const accessToken = jwt.sign({ 
-        id: user.id, 
+    const accessToken = jwt.sign({
+        id: user.id,
         email: user.email,
         name: user.username,
         role: user.role
     }, process.env.JWT_SECRET, { expiresIn: '15m' });
 
     const refreshToken = jwt.sign(
-        { id: user.id},
+        { id: user.id },
         process.env.JWT_REFRESH_SECRET,
-        { expiresIn: '30d'}
+        { expiresIn: '30d' }
     );
 
     await prisma.refresh_tokens.create({
